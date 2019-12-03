@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>#100DaysOfCode</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script>
+        function showDiff() {
+            var date1 = new Date("2019/11/01");
+            var date2 = new Date();
+
+            var diff = (date2 - date1) / 1000;
+            var diff = Math.abs(Math.floor(diff));
+
+            var days = Math.floor(diff / (24 * 60 * 60));
+            var leftSec = diff - days * 24 * 60 * 60;
+
+            var years = 1;
+            if (days >= 100) {
+                years = Math.abs(Math.floor(days / 100));
+                days = days - (years * 100);
+            }
+
+            var text = "#100DaysOfCode #R" + years + "D" + days;
+            document.getElementById("showTime").value = text;
+        };
+
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("showTime");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            //alert("Copied the text: " + copyText.value);
+        }
+    </script>
+</head>
+<body onload="javascript:showDiff()">
+<div class="container">
+    <h1>How long did you do the 100 Days Challenge?</h1>
+    <p>
+
+        <div class="input-group mb-3">
+            <input id="showTime" type="text" class="form-control" placeholder="#100DaysOfCode" aria-label="#100DaysOfCode" aria-describedby="copy-button">
+            <div class="input-group-append">
+                <button onclick="myFunction()" class="btn btn-outline-secondary" type="button" id="copy-button">Copy Text</button>
+            </div>
+        </div>
+    </p>
+</div>
+</body>
+
+</html>
